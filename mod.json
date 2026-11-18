@@ -10,5 +10,21 @@
 	"name": "Jukebox",
 	"version": "v3.8.0",
 	"developer": "Fleym",
-	"description": "Jukebox NONG mod for Geometry Dash"
-
+	"description": "Jukebox NONG mod for Geometry Dash",
+	"repository": "https://github.com",
+	"resources": {
+		"spritesheets": {
+			"JukeboxSheet": [
+				"resources/*.png"
+			]
+		}
+	},
+	"dependencies": {
+		"geode.node-ids": ">=v1.18.0"
+	},
+	"tags": [
+		"music",
+		"enhancement",
+		"interface"
+	]
+}
