@@ -1,14 +1,15 @@
 name: Build Mod
-on: [push, pull_request, workflow_dispatch]
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - "**"
 
 jobs:
   build:
-    name: Build (${{ matrix.platform }})
+    name: Build (android64)
     runs-on: ubuntu-latest
-    strategy:
-      fail-fast: false
-      matrix:
-        platform: [android64]
     steps:
       - uses: actions/checkout@v4
         with:
@@ -17,5 +18,11 @@ jobs:
       - name: Build Geode mod
         uses: geode-sdk/build-geode-mod@main
         with:
-          platform: ${{ matrix.platform }}
-          geode: v6.0.0-alpha.1
+          target: Android64
+          sdk: nightly
+          configure-args: -DCMAKE_CXX_SCAN_FOR_MODULES=OFF
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: jukebox-android64
+          path: build/*.geode
